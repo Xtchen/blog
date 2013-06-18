@@ -1,0 +1,96 @@
+<div class="top-margin">
+	<div class="post_feed" id="whole_show">
+
+		<!--display the post-->
+		<div id="post">
+			<h2><%= @post.title %></h2>
+			<p class="muted small-size"><%= "Posted on "+@post.created_at.to_formatted_s(:long) %></p>
+			<p><%= raw @post.content %></p>
+			<% if @post.updated_at != @post.created_at %>
+				<div>
+					<p class="muted small-size"><%= "Last edited on "+@post.updated_at.to_formatted_s(:long) %></p>
+				</div>
+			<% end %>
+			<div id="post-footer">
+				<div class="post-footer-tags">
+					<% @post.tags.each do |tag| %>
+						<a class="label normal-size" href=<%= showByTag_post_path tag %>><%= tag.name %></a>
+					<% end %>
+				</div>
+				<div class="post-footer-coms normal-size" >
+					<% if signed_in? %>
+						<a class="muted" href=<%= edit_post_path @post %>><i class="icon-text-height"></i> Edit</a>
+						<i class="icon-trash"></i><%= link_to " Delete", delete_path+"?id="+@post.id.to_s, :confirm => "Delete this post?", :class => "muted" %>
+					<% end %>
+				</div>
+			</div>
+			<div class="top-margin-small"></div>
+			<div id="next-prev">
+				<br>
+				<hr>
+				<p>
+					<span class="muted">Previous post: </span>
+					<% pre=@post.pre_post %>
+					<% if pre %>
+					<%= link_to pre.title, pre %>
+					<% else %>
+					This is the first post.
+					<% end %>
+				</p>
+				<p>
+					<span class="muted">Next post: </span>
+					<% nxt=@post.next_post %>
+					<% if nxt %>
+					<%= link_to nxt.title, nxt %>
+					<% else %>
+					This is the last post.
+					<% end %>
+				</p>
+			</div>
+		</div>
+
+		<!--reply-->
+		<div class="top-margin-small" id="reply">
+			<legend class="muted">Leave a comment:</legend>
+			<div>
+				<%= form_for @comment do |f| %>
+					<%= f.label :author, "Name:" %>
+					<%= f.text_field :author, :value=>"", :placeholder => "Anonymous", :class=>"width-textfield" %>
+					<%= f.label :content, "Comment:" %>
+					<%= f.text_area :content, :placeholder => "Please input your comment.", :class=>"width-textarea" %>
+					<%= f.hidden_field :post_id, :value=>@post.id %>
+					<br />
+					<%= f.submit "Submit", :class=>"btn"%>
+				<% end %>
+			</div>
+		</div>
+
+		<!--dislay comments-->
+		<div class="top-margin-small" id="comments">
+			<div>
+
+			</div>
+			<div>
+				<% if @post.comments.size==0 %>
+				<legend class="muted">Still no comment.</legend>
+				<% else %>
+				<legend class="muted"><%= @post.comments.size %> Comments:</legend>
+				<% end %>
+				<% @post.comments.each do |comment| %>
+
+				<!--for each comment-->
+				<div id="comment">
+					<p class="muted normal-size">
+						<% if comment.mine %>
+						<!--the label sign for me-->
+							<span class="label label-important">Author</span>
+						<% end %>
+						<strong><%= comment.author %></strong><%= " @ " + comment.created_at.to_formatted_s(:long) %></p>
+					<p><%= comment.content %></p>
+					<hr>
+				</div>
+				<% end %>
+			</div>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,27 @@
+</head>
+<div class="top-margin">
+	<!--display the post-->
+	<div id="post" class="post_feed">
+		<h2>Write a post</h2>
+		<%= form_for(:post, :url => create_path) do |f| %>
+			<%= f.label :title, "Title:"%>
+			<%= f.text_field :title, :class=>"width-textfield" %>
+
+			<%= f.label :content, "Content:" %>
+
+			<%= f.cktext_area :content, :class=>"width-textfield", :id=>"new_content" %><br>
+
+			<%= f.label :tags, "Tags:" %>
+			<%= f.text_field :tags, :class=>"width-textfield", :id => "tags" %><br>
+
+			<% @tags.each do |t| %>
+				<a class="label normal-size" id=<%= t.name %> onclick="addTag()"><%= "#{t.name}:#{t.posts.size}" %></a>
+			<% end %>
+			<br>
+			<br>
+			<br>
+			<%= f.submit "Post", :confirm =>"Post?", :class => "btn btn-large btn-primary" %>
+			<%= link_to "Cancel", posts_path, :confirm =>"Give up this post?",:class=> "btn btn-large btn-primary" %>
+		<% end %>
+	</div>
+</div>

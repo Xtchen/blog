@@ -1,0 +1,37 @@
+<div class="top-margin post_feed">
+
+	<!--show intro-->
+	<div>
+		<%= form_for(:intro, :url => update_intro_settings_path) do |f| %>
+		<legend>Introduce</legend>
+		<%= f.text_area :content, :value => @intro.content, :class => "width-textfield" %>
+		<br>
+		<%= f.submit "Update", :confirm =>"Update this post?", :class => "btn btn-large btn-primary"%>
+		<% end %>
+	</div>
+	<!--show/update/delete links-->
+	<div>
+		<legend>All links</legend>
+		<% @links.each do |l| %>
+			<%= form_for(:link, :url => update_link_settings_path) do |f| %>
+			<%= f.hidden_field :id, :value => l.id %>
+			<%= f.text_field :name, :value => l.name %>
+			<%= f.text_field :url, :value => l.url %>
+			<%= link_to l.name, l.url, :target => "view_window" %>
+			<%= f.submit "Update", :confirm =>"Update this link?", :class => "btn btn-primary pull-right" %>
+			<%= link_to "Delete", "#{destroy_link_settings_path}?id=#{l.id}", :confirm =>"Delete this link?", :method => :delete, :class => "btn btn-primary pull-right" %>
+			<br>
+			<% end %>
+		<% end %>
+	</div>
+	<!--add link-->
+	<div>
+		<legend>Add a link</legend>
+		<%= form_for(:link, :url => create_link_settings_path) do |f| %>
+			<%= f.text_field :name %>
+			<%= f.text_field :url %>
+			<%= f.submit "Create", :confirm =>"Create this link?", :class => "btn btn-primary pull-right" %>
+			<br>
+		<% end %>
+	</div>
+</div>

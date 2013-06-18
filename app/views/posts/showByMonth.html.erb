@@ -1,0 +1,37 @@
+<div class="top-margin">
+	<div>
+		<h2>Posts for month "<%= @month.strftime("%B %Y") %>"</a></h2>
+	</div>
+	<% @posts.each do |post| %>
+
+	<!--feed-->
+	<div class="post_feed" id="post">
+		<h2><%= link_to post.title, post %></h2>
+		<p class="muted small-size"><%= "Posted on "+post.created_at.to_formatted_s(:long) %></p>
+		<p><%= raw post.content.first(500)  %></p>
+
+		<!--footer for post-->
+		<div id="post-footer">
+			<div class="post-footer-tags">
+				<% post.tags.each do |tag| %>
+				<a class="label" href=<%= showByTag_post_path tag %>><%= tag.name %></a>
+				<% end %>
+			</div>
+			<div class="post-footer-coms small-size" >
+				<% if signed_in? %>
+				<a class="muted" href=<%= edit_post_path post %>><i class="icon-text-height"></i> Edit</a>
+				<i class="icon-trash"></i><%= link_to " Delete", delete_path+"?id="+post.id.to_s, :confirm => "Delete this post?", :class => "muted" %>
+				<% end %>
+				<% if post.comments.size == 0 %>
+				<a class="muted" href=<%= post_path post %>><i class="icon-edit"></i> Leave a comment</a>
+				<% else %>
+				<a class="muted" href=<%= post_path post %>><i class="icon-list-alt"></i><%= " Comments: "+post.comments.size.to_s %></a>
+				<% end %>
+			</div>
+		</div>
+	</div>
+	<% end %>
+	<div class="digg_pagination"><!-- paging -->
+		<%= will_paginate @posts, :container => false %>
+	</div>
+</div>

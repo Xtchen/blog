@@ -1,0 +1,45 @@
+// Place all the styles related to the posts controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+@import "bootstrap";
+.post_feed {
+padding: 50px;
+margin-bottom: 20px;
+font-size: 18px;
+font-weight: 200;
+line-height: 30px;
+color: inherit;
+background-color: white;
+-webkit-border-radius: 6px;
+-moz-border-radius: 6px;
+border-radius: 6px;
+-moz-box-shadow: 2px 2px 2px gray;
+-webkit-box-shadow: 2px 2px 2px gray;
+box-shadow: 2px 2px 2px gray;
+}
+.top-margin {
+	margin-top: 80px;
+}
+.top-margin-small {
+	margin-top: 30px;
+}
+.top-margin-small {
+	margin-top: 30px;
+}
+.small-size {
+	font-size: 12px;
+}
+.normal-size {
+	font-size: 14px;
+}
+.post-footer-tags{
+	max-width: 300px;
+	float:left;
+}
+.post-footer-coms{
+	max-width: 300px;
+	float:right;
+}
+.prev-next-div-bg{
+	background-color: gray;
+}

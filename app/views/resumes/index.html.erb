@@ -1,0 +1,17 @@
+<div class="top-margin">
+	<div class="post_feed">
+		<legend>Xiaotong Chen's RESUME</legend>
+		<% if @resume %>
+		<p><%= raw @resume.content %></p>
+		<div>
+			<% if signed_in? %>
+				<hr>
+				<a class="muted" href=<%= edit_resume_path @resume %>><i class="icon-text-height"></i> Edit</a>
+				<i class="icon-trash"></i><%= link_to " Delete", @resume, :confirm => "Delete this resume?", :method => :delete, :class => "muted" %>
+			<% end %>
+		</div>
+		<% else %>
+		<p>No resume found!</p>
+		<% end %>
+	</div>
+</div>

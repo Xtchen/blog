@@ -1,0 +1,124 @@
+<div class="top-margin">
+	<div class="container-fluid">
+		<div class="row-fluid">
+
+			<!--mid container-->
+			<div class="span10">
+				<% @posts.each do |post| %>
+
+					<!--feed-->
+					<div class="post_feed" id="post">
+						<h2><%= link_to post.title, post %></h2>
+						<p class="muted small-size"><%= "Posted on "+post.created_at.to_formatted_s(:long) %></p>
+						<p><%= raw post.content.first(500)  %></p>
+						
+						<!--footer for post-->
+						<div id="post-footer">
+							<div class="post-footer-tags">
+								<% post.tags.each do |tag| %>
+									<a class="label" href=<%= showByTag_post_path tag %>><%= tag.name %></a>
+								<% end %>
+							</div>
+							<div class="post-footer-coms small-size" >
+								<% if signed_in? %>
+									<a class="muted" href=<%= edit_post_path post %>><i class="icon-text-height"></i> Edit</a>
+									<i class="icon-trash"></i><%= link_to " Delete", delete_path+"?id="+post.id.to_s, :confirm => "Delete this post?", :class => "muted" %>
+								<% end %>
+								<% if post.comments.size == 0 %>
+									<a class="muted" href=<%= post_path post %>><i class="icon-edit"></i> Leave a comment</a>
+								<% else %>
+									<a class="muted" href=<%= post_path post %>><i class="icon-list-alt"></i><%= " Comments: "+post.comments.size.to_s %></a>
+								<% end %>
+							</div>
+						</div>
+					</div>
+				<% end %>
+				<div class="digg_pagination"><!-- paging -->
+				    <%= will_paginate @posts, :container => false %>
+				</div>
+			</div>
+
+			<!--right container-->
+			<div class="span2">
+				<!--right sider-->
+				<div class="accordion side" id="right_accordion">
+					<!--about me-->
+					<div class="accordion-group">
+						<div class="accordion-heading">
+							<a class="accordion-toggle" data-toggle="collapse" data-parent="#right_accordion" href="#collapseOne">
+								<i class="icon-user"></i> About Me
+							</a>
+						</div>
+						<div id="collapseOne" class="accordion-body collapse in">
+							<div class="accordion-inner">
+								<p><%= @intro.content %></p>
+							</div>
+						</div>
+					</div>
+					<!--tags-->
+					<div class="accordion-group">
+						<div class="accordion-heading">
+							<a class="accordion-toggle" data-toggle="collapse" data-parent="#right_accordion" href="#collapseTwo">
+								<i class="icon-tags"></i> Tags
+							</a>
+						</div>
+						<div id="collapseTwo" class="accordion-body collapse">
+							<div class="accordion-inner">
+								<% tags=Tag.all.each do |tag| %>
+									<a class="label" href=<%= showByTag_post_path tag %>><%= tag.name %></a><span class="badge"><%= tag.posts.size %></span>
+								<% end %>
+							</div>
+						</div>
+					</div>
+					<!--archive:date-->
+					<div class="accordion-group">
+						<div class="accordion-heading">
+							<a class="accordion-toggle" data-toggle="collapse" data-parent="#right_accordion" href="#collapseThree">
+								<i class="icon-th-list"></i> Archive
+							</a>
+						</div>
+						<div id="collapseThree" class="accordion-body collapse">
+							<div class="accordion-inner">
+								<div class="accordion" id="date_inner_accordion">
+								<% @posts_years.each do |year, posts|%>
+									<div class="accordion-group">
+										<div class="accordion-heading">
+											<a class="accordion-toggle" data-toggle="collapse" data-parent="#date_inner_accordion" href="#collapse"+<%= year.strftime("%Y")%>>
+												<%= year.strftime("%Y")%>
+											</a>
+										</div>
+										<div id="collapse"+<%= year.strftime("%Y")%> class="accordion-body collapse in">
+											<div class="accordion-inner">
+												<ul class="nav nav-list">
+													<% posts.group_by { |post| post.created_at.beginning_of_month}.each do |month, post_s| %>
+														<li><a href=<%= "#{showByMonth_posts_path}?month=#{month}"%>><%= month.strftime("%B")+"  " %><span class="badge"><%= post_s.size %></span></a></li>
+													<% end %>
+												</ul>
+											</div>
+										</div>
+									</div>
+								<% end %>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!--links-->
+					<div class="accordion-group">
+						<div class="accordion-heading">
+							<a class="accordion-toggle" data-toggle="collapse" data-parent="#right_accordion" href="#collapseFour">
+								<i class="icon-star"></i> Links
+							</a>
+						</div>
+						<div id="collapseFour" class="accordion-body collapse">
+							<div class="accordion-inner">
+								<% @links.each do |l| %>
+								<%= link_to l.name, l.url, :target => "view_window" %><br>
+								<% end %>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
