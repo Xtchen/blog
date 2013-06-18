@@ -4,8 +4,14 @@ gem 'rails', '3.2.13'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
+group :development, :test do
+	gem 'sqlite3'
+end
 
-gem 'sqlite3'
+group :production do
+	gem 'thin'
+	gem 'pg'
+end
 
 gem 'json'
 
@@ -27,14 +33,14 @@ gem 'will_paginate'
 
 gem 'bootstrap-sass', '2.0.4'
 
+# To use ActiveModel has_secure_password
 gem 'bcrypt-ruby', '3.0.1'
 
 gem 'tinymce-rails'
 
 gem 'ckeditor'
 
-# To use ActiveModel has_secure_password
-# gem 'bcrypt-ruby', '~> 3.0.0'
+
 
 # To use Jbuilder templates for JSON
 # gem 'jbuilder'
