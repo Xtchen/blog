@@ -4,7 +4,7 @@
 	<div>
 		<%= form_for(:intro, :url => update_intro_settings_path) do |f| %>
 		<legend>Introduce</legend>
-		<%= f.text_area :content, :value => @intro.content, :class => "width-textfield" %>
+		<%= f.text_area :content, :value => (@intro? @intro.content : ""), :class => "width-textfield" %>
 		<br>
 		<%= f.submit "Update", :confirm =>"Update this post?", :class => "btn btn-large btn-primary"%>
 		<% end %>

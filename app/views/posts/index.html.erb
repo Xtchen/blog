@@ -51,7 +51,11 @@
 						</div>
 						<div id="collapseOne" class="accordion-body collapse in">
 							<div class="accordion-inner">
+								<% if @intro %>
 								<p><%= @intro.content %></p>
+								<% else %>
+								<p>Welcome to my blog!</p>
+								<% end %>
 							</div>
 						</div>
 					</div>
