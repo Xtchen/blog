@@ -13,8 +13,8 @@
 							<h2><%= link_to post.title, post, :class=>"post-title" %></h2>
 						</div>
 						<!--date-->
-						<div class="post-ts">
-							<div class="post-ts-date">
+						<div class="post-ts-flag">
+							<div class="post-ts-date-flag">
 								<span><%= post.created_at.strftime("%b %d") %></span>
 							</div>
 						</div>
@@ -55,9 +55,9 @@
 				<div class="accordion side" id="right_accordion">
 					<!--about me-->
 					<div class="accordion-group">
-						<div class="accordion-heading">
+						<div class="accordion-heading post-sider">
 							<a class="accordion-toggle" data-toggle="collapse" data-parent="#right_accordion" href="#collapseOne">
-								<i class="icon-user"></i> About Me
+								<i class="icon-user"></i><span>About Me</span>
 							</a>
 						</div>
 						<div id="collapseOne" class="accordion-body collapse in">
@@ -72,9 +72,9 @@
 					</div>
 					<!--tags-->
 					<div class="accordion-group">
-						<div class="accordion-heading">
+						<div class="accordion-heading post-sider">
 							<a class="accordion-toggle" data-toggle="collapse" data-parent="#right_accordion" href="#collapseTwo">
-								<i class="icon-tags"></i> Tags
+								<i class="icon-tags"></i><span>Tags</span>
 							</a>
 						</div>
 						<div id="collapseTwo" class="accordion-body collapse">
@@ -87,9 +87,9 @@
 					</div>
 					<!--archive:date-->
 					<div class="accordion-group">
-						<div class="accordion-heading">
+						<div class="accordion-heading post-sider">
 							<a class="accordion-toggle" data-toggle="collapse" data-parent="#right_accordion" href="#collapseThree">
-								<i class="icon-th-list"></i> Archive
+								<i class="icon-th-list"></i><span>Archive</span>
 							</a>
 						</div>
 						<div id="collapseThree" class="accordion-body collapse">
@@ -119,9 +119,9 @@
 					</div>
 					<!--links-->
 					<div class="accordion-group">
-						<div class="accordion-heading">
+						<div class="accordion-heading post-sider">
 							<a class="accordion-toggle" data-toggle="collapse" data-parent="#right_accordion" href="#collapseFour">
-								<i class="icon-star"></i> Links
+								<i class="icon-star"></i><span>Links</span>
 							</a>
 						</div>
 						<div id="collapseFour" class="accordion-body collapse">

@@ -34,27 +34,41 @@ box-shadow: 2px 2px 2px gray;
 }
 
 .post-header{
-margin: -30px 0px 0px -5px;
+margin: -30px 0px 0px -35px;
 padding: 8px 12px;
 text-shadow: 0 1px 0 rgba(255,255,255,.5);
 }
 .post-title{
-color: rgb(233, 0, 0);
+color: rgb(184, 0, 0);
 font-size: 30px;
 font-weight: normal;
 font-family: 'Droid Serif', serif;
 font-style: italic;
 }
-.post-ts{
+.post-ts-arrow{
 background: url(date-arrow.png) no-repeat;
 width: 175px;
-height: 40px;
+height: 41px;
 margin: -45px 0 0 -70px;
 }
-.post-ts-date{
+.post-ts-flag{
+background: url(date-flag.png) no-repeat;
+width: 175px;
+height: 40px;
+margin: -45px 0 0 -125px;
+}
+.post-ts-date-arrow{
 position: relative;
 height: 10px;
 padding: 6px 0px 0px 7px;
+font-size: 14px;
+font-weight: bold;
+}
+.post-ts-date-flag{
+position: relative;
+color: white;
+height: 10px;
+padding: 6px 0px 0px 16px;
 font-size: 14px;
 font-weight: bold;
 }
@@ -77,8 +91,23 @@ font-weight: bold;
 .prev-next-div-bg{
 	background-color: gray;
 }
-
-
+.post-sider{
+margin: 0 0 0 -11px;
+background: url(sider_3.png);
+width: 221px;
+height: 55px;
+}
+.post-sider a{
+padding: 25px 0px 0px 23px !important;
+color: white;
+}
+.post-sider span{
+padding: 27px 0px 0px 23px ;
+}
+.post-sider a:hover{
+text-decoration: none;
+font-weight: bold;
+}
 .post-header-env{
 background: url(http://static.tumblr.com/bte9rhd/ETKl9mp5t/text_top.png) no-repeat 0 0;
 padding: 39px 0 8px 59px;
