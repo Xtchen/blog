@@ -1,4 +1,7 @@
 class CommentsController < ApplicationController
+
+	before_filter :admin_validate, :except => [:create]
+
 	def create
 		comment = Comment.new(params[:comment])
 		if comment.author.blank?
@@ -11,12 +14,24 @@ class CommentsController < ApplicationController
 			comment.mine = false
 		end
 		if comment.save
-			redirect_to post_path(comment.post)
+			flash[:success] = 'Comment successfully posted!'
 		else
-
+			flash[:error] = 'Error occured!'
 		end
+		redirect_to post_path(comment.post)
 	end
+
 	def new
 		
+	end
+
+	def destroy
+		comment = Comment.find params[:id]
+		if Comment.delete comment
+			flash[:success] = 'Comment deleted! '
+		else
+			flash[:error] = 'faild to delete this comment! '
+		end
+		redirect_to post_path(comment.post)
 	end
 end
