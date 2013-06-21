@@ -16,7 +16,7 @@ class CommentsController < ApplicationController
 		if comment.save
 			flash[:success] = 'Comment successfully posted!'
 		else
-			flash[:error] = 'Error occured!'
+			flash[:error] = 'Faild! The comment should contain at least 6 letters!'
 		end
 		redirect_to post_path(comment.post)
 	end
