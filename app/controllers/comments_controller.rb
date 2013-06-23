@@ -15,14 +15,14 @@ class CommentsController < ApplicationController
 			comment.mine = false
 		end
 		if comment.save
-			flash[:success] = 'Comment successfully posted!'
+			#flash[:success] = 'Comment successfully posted!'
 			respond_to do |format|
 				#format.json { render :text => {:comments => Post.find(comment.post_id).comments, :count => Post.find(comment.post_id).comments.size, :signed => signed_in?, :valid => true}.to_json}
 				#format.json { render :json => "test"}
 				format.json { render :json => comment.my_to_json(signed_in?) }
 			end
 		else
-			flash[:error] = 'Faild! The comment should contain at least 6 letters!'
+			#flash[:error] = 'Faild! The comment should contain at least 6 letters!'
 			respond_to do |format|
 				format.json { render :json => {:saved => false}.to_json}
 				#format.json { render :json => "test"}

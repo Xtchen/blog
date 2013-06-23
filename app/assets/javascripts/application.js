@@ -40,7 +40,7 @@ $(document).ready(function(){
 	 		comment:com
 	 	};
 
- 		alert("before");
+ 		//alert("before");
  		$.post("/comments", c, 
  			function(data){
  				if(data.saved == true){
@@ -81,7 +81,7 @@ $(document).ready(function(){
 	 				alert("Comment invalid. The comment should contain at least 6 characters. Thx!");
 	 			}
  			} );
- 		alert("after");
+ 		//alert("after");
  		return false;
  	});
 
