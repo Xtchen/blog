@@ -1,6 +1,7 @@
 class CommentsController < ApplicationController
 
 	before_filter :admin_validate, :except => [:create]
+	respond_to :html, :xml, :json
 
 	def create
 		comment = Comment.new(params[:comment])
@@ -15,10 +16,19 @@ class CommentsController < ApplicationController
 		end
 		if comment.save
 			flash[:success] = 'Comment successfully posted!'
+			respond_to do |format|
+				#format.json { render :text => {:comments => Post.find(comment.post_id).comments, :count => Post.find(comment.post_id).comments.size, :signed => signed_in?, :valid => true}.to_json}
+				#format.json { render :json => "test"}
+				format.json { render :json => comment.my_to_json(signed_in?) }
+			end
 		else
 			flash[:error] = 'Faild! The comment should contain at least 6 letters!'
+			respond_to do |format|
+				format.json { render :json => {:saved => false}.to_json}
+				#format.json { render :json => "test"}
+			end
 		end
-		redirect_to post_path(comment.post)
+		#redirect_to post_path(comment.post)
 	end
 
 	def new

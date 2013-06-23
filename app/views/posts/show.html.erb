@@ -1,6 +1,5 @@
 <div class="top-margin">
 	<div class="post_feed" id="whole_show">
-
 		<!--display the post-->
 		<div id="post">
 			<h2><%= @post.title %></h2>
@@ -53,24 +52,21 @@
 		<div class="top-margin-small" id="reply">
 			<legend class="muted">Leave a comment:</legend>
 			<div>
-				<%= form_for @comment do |f| %>
+				<%= form_for @comment, :remote => true, :method => :post do |f| %>
 					<%= f.label :author, "Name:" %>
-					<%= f.text_field :author, :value=>"", :placeholder => "Anonymous", :class=>"width-textfield" %>
+					<%= f.text_field :author, :id => "comment_author", :value=>"", :placeholder => "Anonymous", :class=>"width-textfield" %>
 					<%= f.label :content, "Comment:" %>
-					<%= f.text_area :content, :placeholder => "Please input your comment.", :class=>"width-textarea" %>
-					<%= f.hidden_field :post_id, :value=>@post.id %>
+					<%= f.text_area :content, :id => "comment_content", :placeholder => "Please input your comment.", :class=>"width-textarea" %>
+					<%= f.hidden_field :post_id, :id => "comment_post_id", :value=>@post.id %>
 					<br />
-					<%= f.submit "Submit", :class=>"btn"%>
+					<%= f.submit "Submit", :class=>"btn", :id => "submit-comment"%>
 				<% end %>
 			</div>
 		</div>
 
 		<!--dislay comments-->
 		<div class="top-margin-small" id="comments">
-			<div>
-
-			</div>
-			<div>
+			<div id="all-comments">
 				<% if @post.comments.size==0 %>
 				<legend class="muted">Still no comment.</legend>
 				<% else %>
@@ -80,6 +76,7 @@
 
 				<!--for each comment-->
 				<div id="comment">
+					<div id=<%= "comment-hidden-#{comment.id}" %>></div>
 					<p class="muted normal-size">
 						<% if comment.mine %>
 						<!--the label sign for me-->

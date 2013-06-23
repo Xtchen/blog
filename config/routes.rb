@@ -4,7 +4,7 @@ Blog::Application.routes.draw do
       get 'showByTag'
     end
     collection do
-      get 'search'
+      post 'search'
       get 'showByMonth'
     end
   end

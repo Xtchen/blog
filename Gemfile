@@ -42,6 +42,7 @@ gem 'tinymce-rails'
 
 gem 'ckeditor'
 
+gem 'jbuilder', '~> 1.4.2'
 
 
 # To use Jbuilder templates for JSON

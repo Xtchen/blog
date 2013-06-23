@@ -1,6 +1,7 @@
 class PostsController < ApplicationController
 
 	before_filter :admin_validate, :only => [:new, :create, :edit, :update, :destroy]
+	respond_to :html, :xml, :json
 
 	def index
 		@intro = Intro.first
