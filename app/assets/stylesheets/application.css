@@ -98,8 +98,26 @@ bottom:0;
 }
 .width-textarea{
   height:100px;
-  width:700px;
+  width:99%;
 }
 .width-textfield{
-  width:700px;
+  width:99%;
+}
+.go-top-img{
+background: url(go-top.png) no-repeat;
+height: 50px;
+width: 50px;
+margin: 10px 0 0 12px
+}
+.go-top{
+display: none;
+background-color: #000000;
+position: fixed;
+height: 50px;
+width: 50px;
+opacity: 0.3;
+cursor: pointer;
+bottom: 100px;
+margin-left: 800px;
+z-index: 10;
 }

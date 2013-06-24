@@ -51,6 +51,7 @@
 		<!--reply-->
 		<div class="top-margin-small" id="reply">
 			<legend class="muted">Leave a comment:</legend>
+			<div id="comment-error-message"></div>
 			<div>
 				<%= form_for @comment, :remote => true, :method => :post do |f| %>
 					<%= f.label :author, "Name:" %>
