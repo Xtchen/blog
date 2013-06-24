@@ -1,40 +1,47 @@
-<% posts.each do |post| %>
+<% if !posts.empty? %>
+	<% posts.each do |post| %>
 
-<!--feed-->
-<div class="post_feed" id="post">
-	<!--title-->
-	<div class="post-header">
-		<h2><%= link_to post.title, post, :class=>"post-title" %></h2>
-	</div>
-	<!--date-->
-	<div class="post-ts-flag">
-		<div class="post-ts-date-flag">
-			<span><%= post.created_at.strftime("%b %d") %></span>
+	<!--feed-->
+	<div class="post_feed" id="post">
+		<!--title-->
+		<div class="post-header">
+			<h2><%= link_to post.title, post, :class=>"post-title" %></h2>
+		</div>
+		<!--date-->
+		<div class="post-ts-flag">
+			<div class="post-ts-date-flag">
+				<span><%= post.created_at.strftime("%b %d") %></span>
+			</div>
+		</div>
+		<!--content-->
+		<div class="post-content">
+			<p><%= raw post.content.first(500)  %></p>
+		</div>
+		<!--footer for post-->
+		<div id="post-footer">
+			<div class="post-footer"></div>
+			<div class="post-footer-tags">
+				<% post.tags.each do |tag| %>
+				<a class="label" href=<%= showByTag_post_path tag %>><%= tag.name %></a>
+				<% end %>
+			</div>
+			<div class="post-footer-coms small-size" >
+				<% if signed_in? %>
+				<a class="muted" href=<%= edit_post_path post %>><i class="icon-text-height"></i> Edit</a>
+				<i class="icon-trash"></i><%= link_to " Delete", delete_path+"?id="+post.id.to_s, :confirm => "Delete this post?", :class => "muted" %>
+				<% end %>
+				<% if post.comments.size == 0 %>
+				<a class="muted" href=<%= post_path post %>><i class="icon-edit"></i> Leave a comment</a>
+				<% else %>
+				<a class="muted" href=<%= post_path post %>><i class="icon-list-alt"></i><%= " Comments: "+post.comments.size.to_s %></a>
+				<% end %>
+			</div>
 		</div>
 	</div>
-	<!--content-->
-	<div class="post-content">
-		<p><%= raw post.content.first(500)  %></p>
+	<% end %>
+<% else %>
+	<div class="alert alert-block">
+		<h3>Sorry,</h3>
+		<p>Couldn't find anything to display...</p>
 	</div>
-	<!--footer for post-->
-	<div id="post-footer">
-		<div class="post-footer"></div>
-		<div class="post-footer-tags">
-			<% post.tags.each do |tag| %>
-			<a class="label" href=<%= showByTag_post_path tag %>><%= tag.name %></a>
-			<% end %>
-		</div>
-		<div class="post-footer-coms small-size" >
-			<% if signed_in? %>
-			<a class="muted" href=<%= edit_post_path post %>><i class="icon-text-height"></i> Edit</a>
-			<i class="icon-trash"></i><%= link_to " Delete", delete_path+"?id="+post.id.to_s, :confirm => "Delete this post?", :class => "muted" %>
-			<% end %>
-			<% if post.comments.size == 0 %>
-			<a class="muted" href=<%= post_path post %>><i class="icon-edit"></i> Leave a comment</a>
-			<% else %>
-			<a class="muted" href=<%= post_path post %>><i class="icon-list-alt"></i><%= " Comments: "+post.comments.size.to_s %></a>
-			<% end %>
-		</div>
-	</div>
-</div>
 <% end %>
