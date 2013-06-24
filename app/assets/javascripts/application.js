@@ -20,7 +20,6 @@ function addTag(){
 }
 
 $(document).ready(function(){
-
  	$('#new_comment').submit(function() {
  		var com = {
  		 author:$('#comment_author').val(),
@@ -49,6 +48,7 @@ $(document).ready(function(){
 		 			else{
 		 				htmlstr += "<legend class=\"muted\">"+data.count.toString()+" Comments:</legend>";
 		 			}
+
 	 				$.each(data.comments, function(i, item) {
 	 					htmlstr += "<div id=\"comment\">";
 	 					htmlstr += "<div id=\"comment-hidden-"+item.id.toString()+"\"></div>";
@@ -65,6 +65,7 @@ $(document).ready(function(){
 	 					htmlstr += "</div>";
 	 				});
 	 				$('#all-comments').append(htmlstr);
+
 	 				var current_comment = "#comment-hidden-"+data.current.toString();
 	 				$("html,body").animate({scrollTop:$(current_comment).offset().top}, 1000);
 	 				$(current_comment).addClass("alert alert-success").html("<p>Comment posted successfully.</p>").show();

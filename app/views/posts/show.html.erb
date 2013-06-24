@@ -1,25 +1,25 @@
-<div class="top-margin">
-	<div class="post_feed" id="whole_show">
+	<!--show whole post-->
+	<div class="top-margin post_feed" id="whole_show">
 		<!--display the post-->
 		<div id="post">
 			<h2><%= @post.title %></h2>
 			<p class="muted small-size"><%= "Posted on "+@post.created_at.to_formatted_s(:long) %></p>
 			<p><%= raw @post.content %></p>
 			<% if @post.updated_at != @post.created_at %>
-				<div>
-					<p class="muted small-size"><%= "Last edited on "+@post.updated_at.to_formatted_s(:long) %></p>
-				</div>
+			<div>
+				<p class="muted small-size"><%= "Last edited on "+@post.updated_at.to_formatted_s(:long) %></p>
+			</div>
 			<% end %>
 			<div id="post-footer">
 				<div class="post-footer-tags">
 					<% @post.tags.each do |tag| %>
-						<a class="label normal-size" href=<%= showByTag_post_path tag %>><%= tag.name %></a>
+					<a class="label normal-size" href=<%= showByTag_post_path tag %>><%= tag.name %></a>
 					<% end %>
 				</div>
 				<div class="post-footer-coms normal-size" >
 					<% if signed_in? %>
-						<a class="muted" href=<%= edit_post_path @post %>><i class="icon-text-height"></i> Edit</a>
-						<i class="icon-trash"></i><%= link_to " Delete", delete_path+"?id="+@post.id.to_s, :confirm => "Delete this post?", :class => "muted" %>
+					<a class="muted" href=<%= edit_post_path @post %>><i class="icon-text-height"></i> Edit</a>
+					<i class="icon-trash"></i><%= link_to " Delete", delete_path+"?id="+@post.id.to_s, :confirm => "Delete this post?", :class => "muted" %>
 					<% end %>
 				</div>
 			</div>
@@ -54,13 +54,13 @@
 			<div id="comment-error-message"></div>
 			<div>
 				<%= form_for @comment, :remote => true, :method => :post do |f| %>
-					<%= f.label :author, "Name:" %>
-					<%= f.text_field :author, :id => "comment_author", :value=>"", :placeholder => "Anonymous", :class=>"width-textfield" %>
-					<%= f.label :content, "Comment:" %>
-					<%= f.text_area :content, :id => "comment_content", :placeholder => "Please input your comment.", :class=>"width-textarea" %>
-					<%= f.hidden_field :post_id, :id => "comment_post_id", :value=>@post.id %>
-					<br />
-					<%= f.submit "Submit", :class=>"btn", :id => "submit-comment"%>
+				<%= f.label :author, "Name:" %>
+				<%= f.text_field :author, :id => "comment_author", :value=>"", :placeholder => "Anonymous", :class=>"width-textfield" %>
+				<%= f.label :content, "Comment:" %>
+				<%= f.text_area :content, :id => "comment_content", :placeholder => "Please input your comment.", :class=>"width-textarea" %>
+				<%= f.hidden_field :post_id, :id => "comment_post_id", :value=>@post.id %>
+				<br />
+				<%= f.submit "Submit", :class=>"btn", :id => "submit-comment"%>
 				<% end %>
 			</div>
 		</div>
@@ -73,28 +73,8 @@
 				<% else %>
 				<legend class="muted"><%= @post.comments.size %> Comments:</legend>
 				<% end %>
-				<% @post.comments.each do |comment| %>
-
-				<!--for each comment-->
-				<div id="comment">
-					<div id=<%= "comment-hidden-#{comment.id}" %>></div>
-					<p class="muted normal-size">
-						<% if comment.mine %>
-						<!--the label sign for me-->
-							<span class="label label-important">Author</span>
-						<% end %>
-						<strong><%= comment.author %></strong><%= " @ " + comment.created_at.to_formatted_s(:long) %></p>
-					<p><%= comment.content %></p>
-					<div>
-						<% if signed_in? %>
-						<%= link_to "Delete", comment, :method => :delete, :confirm => "Delete this comment?", :class => "btn btn-primary" %>
-						<% end %>
-					</div>
-					<hr>
-				</div>
-				<% end %>
-
+				<!--for all comments-->
+				<%= render :partial => "comments/show_comment", :locals => {:post => @post} %>
 			</div>
 		</div>
 	</div>
-</div>
