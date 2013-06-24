@@ -94,6 +94,12 @@ $(document).ready(function(){
 
  	$(window).scroll(function(){
  		var distance = $(document).scrollTop();
+ 		if(distance >=100){
+ 			$('#navbar').css({"opacity":"0.7"});
+ 		}
+ 		else{
+ 			$('#navbar').css({"opacity":"1"});
+ 		}
  		if (distance >= 1000){
  			$('#go-top').show();
  			$('#go-top').css({"display": "inline", "opacity": "0.3"});
