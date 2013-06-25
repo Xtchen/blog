@@ -40,6 +40,7 @@ class PostsController < ApplicationController
 	def edit
 		@post = Post.find params[:id]
 		@tags = @post.tags
+		@all_tags = Tag.all
 	end
 
 	def update

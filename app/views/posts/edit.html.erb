@@ -11,14 +11,14 @@
 			<%= f.cktext_area :content, :value => @post.content, :class=>"width-textfield tinymce" %><br>
 
 			<% str_tag = "" %>
-			<% @post.tags.each do |t| %>
+			<% @tags.each do |t| %>
 				<% str_tag = str_tag.blank? ? t.name : "#{str_tag},#{t.name}" %>
 			<% end %>
 			
 			<%= f.label :tags, "Tags:" %>
 			<%= f.text_field :tags, :id => "tags", :value => str_tag, :class=>"width-textfield" %><br>
 
-			<% @tags.each do |t| %>
+			<% @all_tags.each do |t| %>
 				<a class="label normal-size" id=<%= t.name %> onclick="addTag()"><%= "#{t.name}:#{t.posts.size}" %></a>
 			<% end %>
 			<br>
