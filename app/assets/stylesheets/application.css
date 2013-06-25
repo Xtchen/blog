@@ -96,6 +96,9 @@ box-shadow: 2px 2px 2px gray;
 margin-top: 100px;
 bottom:0;
 }
+.footer p{
+  margin: 0px;
+}
 .width-textarea{
   height:100px;
   width:99%;
