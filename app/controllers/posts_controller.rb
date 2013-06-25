@@ -57,16 +57,16 @@ class PostsController < ApplicationController
 					end
 				end
 			end
-
-			tags.each do |t|
-				tag = Tag.find_by_name t
-				unless tag
-					tag = Tag.new(:name => t)
-					tag.save
+			if tags
+				tags.each do |t|
+					tag = Tag.find_by_name t
+					unless tag
+						tag = Tag.new(:name => t)
+						tag.save
+					end
+					post.tags<<tag
 				end
-				post.tags<<tag
 			end
-
 			flash[:success] = 'Successfully saved!'
 			redirect_to post_path(post)
 		else
