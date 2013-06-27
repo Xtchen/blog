@@ -1,0 +1,16 @@
+<div class="top-margin">
+	<!--display notices-->
+	<div>
+		<% @notices.each do |notice| %>
+		<% if notice.active %>
+		<span class="label">new</span>
+		<% end %>
+		<%= link_to "\"#{notice.comment.author}\" said: \"#{notice.comment.content.first(200)}\" @ <#{notice.comment.post.title}>", notice, :target => "view_window" %>
+		<br>
+		<% end %>
+	</div>
+	<!-- pager -->
+	<div class="apple_pagination">
+	    <%= will_paginate @posts, :container => false %>
+	</div>
+</div>
