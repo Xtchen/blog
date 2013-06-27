@@ -15,7 +15,7 @@ Blog::Application.routes.draw do
 
   resources :resumes
   resources :comments
-
+  resources :notices
 
   resources :settings do
     collection do 

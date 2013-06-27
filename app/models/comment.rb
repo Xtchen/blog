@@ -1,6 +1,7 @@
 class Comment < ActiveRecord::Base
 	attr_accessible :author, :content, :post_id
 	belongs_to :post
+	has_many :notices
 	validates :content, :presence => true
 	validates :content, :length => { :minimum => 6 }
 

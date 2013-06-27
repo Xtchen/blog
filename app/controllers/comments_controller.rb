@@ -16,6 +16,9 @@ class CommentsController < ApplicationController
 		end
 		if comment.save
 			#flash[:success] = 'Comment successfully posted!'
+			if !comment.mine
+				Notice.create(:comment_id => comment.id, :active => true)
+			end
 			respond_to do |format|
 				#format.json { render :text => {:comments => Post.find(comment.post_id).comments, :count => Post.find(comment.post_id).comments.size, :signed => signed_in?, :valid => true}.to_json}
 				#format.json { render :json => "test"}
