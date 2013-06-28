@@ -9,6 +9,7 @@ Blog::Application.routes.draw do
     end
   end
 
+  match '/blog', :to=>'posts#index'
   match '/create', :to => 'posts#create'
   match '/update', :to => 'posts#update'
   match '/delete', :to => 'posts#destroy'
@@ -16,6 +17,9 @@ Blog::Application.routes.draw do
   resources :resumes
   resources :comments
   resources :notices
+  resources :abouts, :only => [:index]
+
+  match '/home', :to => 'abouts#index'
 
   resources :settings do
     collection do 
@@ -80,7 +84,7 @@ Blog::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  root :to => 'posts#index'
+  root :to => 'abouts#index'
 
   # See how all your routes lay out with "rake routes"
 

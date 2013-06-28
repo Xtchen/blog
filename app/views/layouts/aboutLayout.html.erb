@@ -2,9 +2,8 @@
 <html>
 <head>
 	<meta name="google-site-verification" content="0SZ5Rj7-NRm2tqjP_PAmKojZUff0Xqv_75H_OXDL8y0" />
-  <title>Xiaotong's Blog<%= yield :title %></title>
+  <title>Xiaotong's Blog: home</title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
-  <script type="text/javascript">var CKEDITOR_BASEPATH = '/assets/ckeditor/';</script>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
   <script src="http://twitter.github.com/bootstrap/assets/js/bootstrap.js"></script>
@@ -14,19 +13,7 @@
 		<!--navigate bar-->
 		<%= render :partial => "layouts/navbar" %>
 		<!--main container-->
-		<div id="main_container" class="container">
-			<% flash.each do |key, value| %>
-        		<div class="alert alert-<%= key %> top-margin"><%= value %></div>
-      		<% end %>
-      		<!--go top-->
-			<div id="go-top" class="go-top">
-				<div id="go-top-img" class="go-top-img">
-					
-				</div>
-			</div>
-			<!--main display area-->
-			<%= yield %>
-		</div>
+		<%= yield %>
 		<!--footer-->
 		<div id="footer" class="footer">
 			<p class="muted" align="center">Xiaotong Chen ©2013</p>
