@@ -153,3 +153,33 @@ background: url(background_gray.png) repeat ;
 .go-top-about{
 	top:100px;
 }
+.go-next, .go-prev{
+height: 25px;
+width: 50px;
+margin: 7px 0 0 14px
+}
+
+.go-next{
+background: url(down.png) no-repeat;
+}
+.go-prev{
+background: url(up.png) no-repeat;
+}
+
+.go-next-blk, .go-prev-blk{
+background-color: #000000;
+position: fixed;
+height: 24px;
+width: 50px;
+opacity: 0.3;
+cursor: pointer;
+top: 100px;
+right: 155px;
+z-index: 10;
+}
+.go-prev-blk{
+display:none;
+}
+.go-next-blk{
+	top: 126px;
+}

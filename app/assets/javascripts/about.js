@@ -59,27 +59,92 @@ $(document).ready(function(){
 	// 	}, 2000 );
 	// });
 $('#about-head-intro').slideDown(1000);
+var h1s = $('h1');
+var topOf2ndH1 = $('h1:eq(1)').offset().top;
+var topOfLastH1 = $('h1:last').offset().top;
+var goTop = $('#go-top-about');
+var goPrev = $('#go-prev-blk');
+var goNext = $('#go-next-blk');
+
+function showImg(elem){
+	elem.show();
+	elem.css({"display": "inline", "opacity": "0.3"});
+}
+
+function mIn(elem){
+	elem.mouseenter(function(){
+ 		elem.css({"display": "inline", "opacity": "0.7"});
+ 	});
+}
+
+function mOut(elem){
+	elem.mouseleave(function(){
+ 		elem.css({"display": "inline", "opacity": "0.3"});
+ 	});
+}
+
+function calculateNext(distance){
+	var res = 0;
+	h1s.each(function(){
+		res = $(this).offset().top;
+		if(distance<res){
+			return false;
+		}
+	});
+	return res;
+}
+
+function calculatePrev(distance){
+	var res = 0;
+	h1s.each(function(index){
+		res = $(this).offset().top;
+		if(distance<res){
+			res = $('h1:eq('+ (index-2) +')').offset().top;
+			return false;
+		}
+		res = $('h1:eq('+ (index-1) +')').offset().top;
+	});
+	return res;
+}
 
 $(window).scroll(function(){
  		var distance = $(document).scrollTop();
- 		if (distance >= 1000){
- 			$('#go-top-about').show();
- 			$('#go-top-about').css({"display": "inline", "opacity": "0.3"});
+ 		if (distance < topOf2ndH1){
+ 			showImg(goNext);
+ 			goTop.hide();
+ 			goPrev.hide();
+ 		}
+ 		else if(distance < topOfLastH1){
+ 			showImg(goTop);
+ 			showImg(goPrev);
+ 			showImg(goNext);
  		}
  		else{
- 			$('#go-top-about').hide();
+ 			goNext.hide();
+			showImg(goPrev);
+ 			showImg(goTop);
  		}
  	});
 
- 	$('#go-top-about').click(function(){
+ 	goTop.click(function(){
  		$("html,body").animate({scrollTop: 0}, 1000);
  	});
+ 	mIn(goTop);
+ 	mOut(goTop);
 
- 	$('#go-top-about').mouseenter(function(){
- 		$('#go-top-about').css({"display": "inline", "opacity": "0.7"}).fadeTo("slow", 0.6);
+ 	goPrev.click(function(){
+ 		var distance = $(document).scrollTop();
+ 		var prevDis = calculatePrev(distance);
+ 		$("html,body").animate({scrollTop: prevDis}, 1000);
  	});
- 	$('#go-top-about').mouseleave(function(){
- 		$('#go-top-about').css({"display": "inline", "opacity": "0.3"});
- 	});
+ 	mIn(goPrev);
+ 	mOut(goPrev);
 
+ 	goNext.click(function(){
+ 		var distance = $(document).scrollTop();
+ 		var nextDis = calculateNext(distance);
+ 		$("html,body").animate({scrollTop: nextDis}, 1000);
+ 	});
+ 	mIn(goNext);
+ 	mOut(goNext);
 });
