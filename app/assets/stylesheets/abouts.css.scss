@@ -130,10 +130,9 @@ background: url(background_gray.png) repeat ;
 }
 .about-fence{
 	position: relative;
-	opacity :0.8;
-	height: 120px;
+	height: 60px;
 	width: 100%;
-	#background: url(fence.png);
+	background: url(fence_gray.png);
 	background-repeat:repeat-x;
 }
 .about-email{
@@ -149,6 +148,9 @@ background: url(background_gray.png) repeat ;
 }
 .carousel-inner img{
 	margin: auto;
+}
+.carousel-caption{
+	opacity: 0.7;
 }
 .go-top-about{
 	top:100px;
@@ -182,4 +184,7 @@ display:none;
 }
 .go-next-blk{
 	top: 126px;
+}
+.about-break{
+	height:300px;
 }
