@@ -105,13 +105,18 @@ class PostsController < ApplicationController
 
 	def destroy
 		id = params[:id]
-		tags = Post.find(id).tags
-		if Post.delete(id)
-			tags.each do |t|
-				if t.posts.empty?
-					Tag.delete t.id
-				end
+		post = Post.find id
+		tags = post.tags
+		notices = post.notices
+		notices.each do |n|
+			Notice.delete n.id
+		end
+		tags.each do |t|
+			if t.posts.size == 1
+				Tag.delete t.id
 			end
+		end
+		if post.destroy
 			flash[:success] = 'Successfully deleted!'
 			redirect_to posts_path
 		else

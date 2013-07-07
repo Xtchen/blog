@@ -40,7 +40,7 @@ class CommentsController < ApplicationController
 
 	def destroy
 		comment = Comment.find params[:id]
-		if Comment.delete comment
+		if Comment.destroy comment
 			flash[:success] = 'Comment deleted! '
 		else
 			flash[:error] = 'faild to delete this comment! '
