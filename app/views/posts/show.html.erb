@@ -1,6 +1,9 @@
 	<% content_for :title do %>
 	<%= ": #{@post.title}" %>
 	<% end %>
+	<% content_for :where do %>
+	<%= "#{@post.title} -- #{post_path @post}" %>
+	<% end %>
 	<!--show whole post-->
 	<div class="top-margin post_feed" id="whole_show">
 		<!--display the post-->

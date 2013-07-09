@@ -1,3 +1,6 @@
+<% content_for :where do %>
+	<%= "show by month" %>
+<% end %>
 <div class="top-margin">
 	<div>
 		<h2>Posts for month "<%= @month.strftime("%B %Y") %>"</a></h2>
