@@ -6,10 +6,4 @@
 CKEDITOR.editorConfig = function( config ) {
 	// Define changes to default configuration here. For example:
 	// config.language = 'fr';
-	config.width = 250;
-	config.uiColor = '#FFF';
-	config.toolbarGroups = [
-        { name: 'pbckcode' } ,                   // shows the pbckcode button
-    ];
-    config.extraPlugins = 'pbckcode';
 };
