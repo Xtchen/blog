@@ -47,6 +47,9 @@ gem 'jbuilder', '~> 1.4.2'
 # To use Jbuilder templates for JSON
 # gem 'jbuilder'
 
+#sitemap
+gem 'sitemap_generator'
+
 # Use unicorn as the app server
 # gem 'unicorn'
 

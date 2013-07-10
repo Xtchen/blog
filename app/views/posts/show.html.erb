@@ -1,5 +1,5 @@
 	<% content_for :title do %>
-	<%= ": #{@post.title}" %>
+	<%= "| #{@post.title}" %>
 	<% end %>
 	<% content_for :where do %>
 	<%= "#{@post.title} -- #{post_path @post}" %>
