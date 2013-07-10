@@ -14,7 +14,7 @@
 			<%= f.text_field :tags, :class=>"width-textfield", :id => "tags" %><br>
 
 			<% @tags.each do |t| %>
-				<a class="label normal-size" id=<%= t.name %> onclick="addTag()"><%= "#{t.name}:#{t.posts.size}" %></a>
+				<a class="label normal-size addTag"><%= "#{t.name}" %></a>
 			<% end %>
 			<br>
 			<br>

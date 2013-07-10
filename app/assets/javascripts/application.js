@@ -14,12 +14,15 @@
 //= require jquery_ujs
 //= require_tree .
 //= require ckeditor/ckeditor
-function addTag(){
-	var object=event.srcElement;
-	document.getElementById("tags").value += (","+object.id);
-}
 
 $(document).ready(function(){
+	$('.addTag').click(function(){
+		var tag = $(this).text();
+		$('#tags').val(function(i, old){
+			return old+","+tag;
+		});
+	});
+
  	$('#new_comment').submit(function() {
  		var com = {
  		 author:$('#comment_author').val(),
