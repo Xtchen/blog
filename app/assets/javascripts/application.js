@@ -141,6 +141,7 @@ $(document).ready(function(){
 
  	//toNext div in show page
  	$(document).on('click', '#toNext', function(event){
+ 		$('#loader').show();
  		var $wholeShow = $('#whole_show');
 		var nextId=$('#toNextHidden').val();
  		$.ajax({
@@ -155,12 +156,14 @@ $(document).ready(function(){
  				$wholeShow.find('#toPrev').show();
  				$wholeShow.find('div').fadeIn('slow');
   				$('html,body').animate({scrollTop: 0}, 200);
+  				$('#loader').hide();
  			}
  		});
  	});
 
  	//toPrev div in show page
  	$(document).on('click', '#toPrev', function(event){
+ 		$('#loader').show();
  		var $wholeShow = $('#whole_show');
 		var prevId=$('#toPrevHidden').val();
  		$.ajax({
@@ -175,6 +178,7 @@ $(document).ready(function(){
  				$wholeShow.find('#toPrev').show();
  				$wholeShow.find('div').fadeIn('slow');
  				$('html,body').animate({scrollTop: 0}, 200);
+ 				$('#loader').hide();
  			}
  		});
  	});

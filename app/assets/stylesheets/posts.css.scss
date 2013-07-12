@@ -159,7 +159,8 @@ opacity: 0.3;
   left:100px;
 }
 .next-button:hover, .prev-button:hover{
-cursor:pointer;  
+cursor:pointer;
+opacity:0.7;
 }
 .to-next-img, .to-prev-img{
 display: inline-block;
@@ -183,4 +184,12 @@ position: absolute;
 -moz-transform:rotate(-90deg); /* Firefox */
 -webkit-transform:rotate(-90deg); /* Safari and Chrome */
 -o-transform:rotate(-90deg); /* Opera */
+}
+.loading{
+position:fixed;
+top: 50%;
+right:50%;
+height:150px;
+width:150px;
+display:none;
 }
