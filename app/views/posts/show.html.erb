@@ -83,4 +83,23 @@
 				<%= render :partial => "comments/show_comment", :locals => {:post => @post} %>
 			</div>
 		</div>
+
+		<% if nxt %>
+		<div id="toNext" class="next-button">
+			<input type="hidden" id="toNextHidden" value=<%="#{nxt.id}"%>/>
+			<div class="to-next-img">
+			</div>
+		</div>
+		<% end %>
+
+		<% if pre %>
+		<div id="toPrev" class="prev-button">
+			<input type="hidden" id="toPrevHidden" value=<%="#{pre.id}"%>/>
+			<div class="to-prev-img">
+			</div>
+		</div>
+		<% end %>
+
 	</div>
+	
+	

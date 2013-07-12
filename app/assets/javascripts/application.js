@@ -139,6 +139,46 @@ $(document).ready(function(){
  		$('#go-top').css({"display": "inline", "opacity": "0.3"});
  	});
 
+ 	//toNext div in show page
+ 	$(document).on('click', '#toNext', function(event){
+ 		var $wholeShow = $('#whole_show');
+		var nextId=$('#toNextHidden').val();
+ 		$.ajax({
+ 			type: "GET",
+ 			url: nextId,
+ 			success: function(data){
+ 				$wholeShow.empty();
+ 				var $newDiv=$(data).find('#whole_show').html();
+ 				$wholeShow.html($newDiv);
+ 				$wholeShow.find('div').hide();
+ 				$wholeShow.find('#toNext').show();
+ 				$wholeShow.find('#toPrev').show();
+ 				$wholeShow.find('div').fadeIn('slow');
+  				$('html,body').animate({scrollTop: 0}, 200);
+ 			}
+ 		});
+ 	});
+
+ 	//toPrev div in show page
+ 	$(document).on('click', '#toPrev', function(event){
+ 		var $wholeShow = $('#whole_show');
+		var prevId=$('#toPrevHidden').val();
+ 		$.ajax({
+ 			type: "GET",
+ 			url: prevId,
+ 			success: function(data){
+ 				$wholeShow.empty();
+ 				var $newDiv=$(data).find('#whole_show').html();
+ 				$wholeShow.html($newDiv);
+ 				$wholeShow.find('div').hide();
+ 				$wholeShow.find('#toNext').show();
+ 				$wholeShow.find('#toPrev').show();
+ 				$wholeShow.find('div').fadeIn('slow');
+ 				$('html,body').animate({scrollTop: 0}, 200);
+ 			}
+ 		});
+ 	});
+
 // about js starts from here
  	function allStop(){
 		envp.stop();
@@ -174,79 +214,54 @@ $(document).ready(function(){
 			opened = true;
 		}
 	});
-	// out.mouseleave(function(){
-	// 	setTimeout(function(){
-	// 		if(!$('.list').is(":hover")){
-	// 			envp.fadeOut(500).fadeIn(500).fadeOut(500, function(){
-	// 				cdiv.css({"top":"-233px"});
-	// 				envp.css({"background-image":"url('/assets/env_close.png')", "top":"211px"});
-	// 			}).fadeIn(500, function(){
-	// 				allStop();
-	// 		divp.hide();
-	// 		cdiv.animate({
-	// 			left: '0px',
-	// 			width: '0px',
-	// 			height: '0px',
-	// 			padding: '0px',
-	// 			margin: '0px'
-	// 		}, function(){
-	// 			envp.animate({
-	// 				left: '0px'
-	// 			});
-	// 		});
-	// 			});
-	// 		}
+	$('#about-head-intro').slideDown(1000);
+	var h1s = $('h1');
+	var topOf2ndH1 = $('h1:eq(1)').offset().top;
+	var topOfLastH1 = $('h1:last').offset().top;
+	var goTop = $('#go-top-about');
+	var goPrev = $('#go-prev-blk');
+	var goNext = $('#go-next-blk');
 
-	// 	}, 2000 );
-	// });
-$('#about-head-intro').slideDown(1000);
-var h1s = $('h1');
-var topOf2ndH1 = $('h1:eq(1)').offset().top;
-var topOfLastH1 = $('h1:last').offset().top;
-var goTop = $('#go-top-about');
-var goPrev = $('#go-prev-blk');
-var goNext = $('#go-next-blk');
+	function showImg(elem){
+		elem.show();
+		elem.css({"display": "inline", "opacity": "0.3"});
+	}
 
-function showImg(elem){
-	elem.show();
-	elem.css({"display": "inline", "opacity": "0.3"});
-}
+	function mIn(elem){
+		elem.mouseenter(function(){
+	 		elem.css({"display": "inline", "opacity": "0.7"});
+	 	});
+	}
 
-function mIn(elem){
-	elem.mouseenter(function(){
- 		elem.css({"display": "inline", "opacity": "0.7"});
- 	});
-}
+	function mOut(elem){
+		elem.mouseleave(function(){
+	 		elem.css({"display": "inline", "opacity": "0.3"});
+	 	});
+	}
 
-function mOut(elem){
-	elem.mouseleave(function(){
- 		elem.css({"display": "inline", "opacity": "0.3"});
- 	});
-}
+	function calculateNext(distance){
+		var res = 0;
+		h1s.each(function(){
+			res = $(this).offset().top;
+			if(distance<res){
+				return false;
+			}
+		});
+		return res;
+	}
 
-function calculateNext(distance){
-	var res = 0;
-	h1s.each(function(){
-		res = $(this).offset().top;
-		if(distance<res){
-			return false;
-		}
-	});
-	return res;
-}
-
-function calculatePrev(distance){
-	var res = 0;
-	h1s.each(function(index){
-		res = $(this).offset().top;
-		if(distance<res){
-			res = $('h1:eq('+ (index-2) +')').offset().top;
-			return false;
-		}
-		res = $('h1:eq('+ (index-1) +')').offset().top;
-	});
-	return res;
-}
+	function calculatePrev(distance){
+		var res = 0;
+		h1s.each(function(index){
+			res = $(this).offset().top;
+			if(distance<res){
+				res = $('h1:eq('+ (index-2) +')').offset().top;
+				return false;
+			}
+			res = $('h1:eq('+ (index-1) +')').offset().top;
+		});
+		return res;
+	}
 
  	goTop.click(function(){
  		$("html,body").animate({scrollTop: 0}, 1000);
@@ -269,5 +284,6 @@ function calculatePrev(distance){
  	});
  	mIn(goNext);
  	mOut(goNext);
+ 	
  	//about js ends at here
  });
