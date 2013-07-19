@@ -21,14 +21,12 @@ class CommentsController < ApplicationController
 			end
 			respond_to do |format|
 				#format.json { render :text => {:comments => Post.find(comment.post_id).comments, :count => Post.find(comment.post_id).comments.size, :signed => signed_in?, :valid => true}.to_json}
-				#format.json { render :json => "test"}
-				format.json { render :json => comment.my_to_json(signed_in?) }
+				format.html {render :partial => "comments/show_comment", :locals => {:post => comment.post}}
 			end
 		else
 			#flash[:error] = 'Faild! The comment should contain at least 6 letters!'
 			respond_to do |format|
 				format.json { render :json => {:saved => false}.to_json}
-				#format.json { render :json => "test"}
 			end
 		end
 		#redirect_to post_path(comment.post)

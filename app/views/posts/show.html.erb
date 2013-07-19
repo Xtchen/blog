@@ -4,6 +4,8 @@
 	<% content_for :where do %>
 	<%= "#{@post.title} -- #{post_path @post}" %>
 	<% end %>
+	<!--alert-->
+	<div id="show-alert"></div>
 	<!--show whole post-->
 	<div class="top-margin post_feed" id="whole_show">
 		<!--display the post-->
@@ -73,15 +75,8 @@
 
 		<!--dislay comments-->
 		<div class="top-margin-small" id="comments">
-			<div id="all-comments">
-				<% if @post.comments.size==0 %>
-				<legend class="muted">Still no comment.</legend>
-				<% else %>
-				<legend class="muted"><%= @post.comments.size %> Comments:</legend>
-				<% end %>
-				<!--for all comments-->
-				<%= render :partial => "comments/show_comment", :locals => {:post => @post} %>
-			</div>
+			<!--show all comments-->
+			<%= render :partial => "comments/show_comment", :locals => {:post => @post} %>
 		</div>
 
 		<!--the next and previous buttons-->

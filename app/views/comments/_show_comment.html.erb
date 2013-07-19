@@ -1,20 +1,27 @@
-<% post.comments.each do |comment| %>
+<div id="all-comments">
+	<% if post.comments.size==0 %>
+	<legend class="muted">Still no comment.</legend>
+	<% else %>
+	<legend class="muted"><%= post.comments.size %> Comments:</legend>
+	<% end %>
 <!--for each comment. accept two variables: comment and admin. comment is the Comment instance; admin is a boolean indicating the login status.-->
-<div id="comment">
-	<div id=<%= "comment-hidden-#{comment.id}" %>></div>
-	<p class="muted normal-size">
-		<% if comment.mine %>
-		<!--the label sign for me-->
-		<span class="label label-important">Author</span>
-		<% end %>
-		<strong><%= comment.author %></strong><%= " @ " + comment.created_at.to_formatted_s(:long) %>
-	</p>
-	<p><%= comment.content %></p>
-	<div>
-		<% if signed_in? %>
-		<%= link_to "Delete", comment, :method => :delete, :confirm => "Delete this comment?", :class => "btn btn-primary" %>
-		<% end %>
+	<% post.comments.each do |comment| %>
+	<div id="comment">
+		<div id=<%= "comment-hidden-#{comment.id}" %>></div>
+		<p class="muted normal-size">
+			<% if comment.mine %>
+			<!--the label sign for me-->
+			<span class="label label-important">Author</span>
+			<% end %>
+			<strong><%= comment.author %></strong><%= " @ " + comment.created_at.to_formatted_s(:long) %>
+		</p>
+		<p><%= comment.content %></p>
+		<div>
+			<% if signed_in? %>
+			<%= link_to "Delete", comment, :method => :delete, :confirm => "Delete this comment?", :class => "btn btn-primary" %>
+			<% end %>
+		</div>
+		<hr>
 	</div>
-	<hr>
+	<% end %>
 </div>
-<% end %>
