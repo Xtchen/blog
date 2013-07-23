@@ -126,7 +126,19 @@ $(document).ready(function(){
 
  	$(window).scroll(function(){
  		var distance = $(document).scrollTop();
- 		
+		var factor=distance/3/$(window).height()+1;
+		var height_1=$(window).height()*1.5*factor;
+		var width_1=$(window).width()*factor;
+		var dis=1.05*distance-200;
+
+		$('#img1').css({'height':ht-distance, 'backgroundSize':width_1+'px '+height_1+'px'});
+		$('#lt-trick').css({'backgroundPosition':'700px '+dis+'px'});
+		$('#part1 h1,#part1 h2.show').css({'opacity':1-distance/$(window).height()});
+		$('#part1 h2.my-hide').css({'opacity':0.2+distance/$(window).height()});
+
+		if(distance==$(document).height()-$(window).height()){
+			$('#bottom-intro').fadeIn(2000);
+		}
  		if(distance >=100){
  			$('#navbar').css({"opacity":"0.7"});
  		}
@@ -213,110 +225,30 @@ $(document).ready(function(){
  	});
 
 // about js starts from here
- 	function allStop(){
-		envp.stop();
-		cdiv.stop();
-		divp.stop();
-	}
-	var out = $('#envp-out');
-	var envp = $('#envp');
-	var cdiv = $('.contact-div');
-	var divp = $('.contact-div p');
-	var opened = false;
-	out.mouseenter(function(){
-		if(!opened){
-			allStop();
-			envp.fadeOut(500).fadeIn(500).fadeOut(500, function(){
-				envp.css({"background-image":"url('/assets/env_open.png')", "top":"0px"});
-				cdiv.css({"top":"0px"});
-			}).fadeIn(500, function(){
-				envp.animate({
-					left: '-400px'
-				}, function(){
-					cdiv.animate({
-						left: '550px',
-						width: '350px',
-						height: '110px',
-						padding: '10px',
-						margin: '10px'
-					}, function(){
-						divp.show();
-					});
-				});
-			});
-			opened = true;
+	var index=1;
+	var lis=$('#sentences li');
+	function rotate(){
+		if(index>=lis.length){
+			index=0;
 		}
+		$(lis).hide();
+		$(lis[index]).css({'display':'inline'}).hide().fadeIn(1000);
+		index++;
+	};
+
+	$(lis).first().css({'display':'inline'});
+
+	setInterval(rotate, 3000);	
+	//rotate(0, lis);
+	$('#part1, #part2').css({'height':$(window).height()*1.5});
+	$('#part3').css({'height':$(window).height()*0.8});
+	var ht=$('#img1').height();
+	var ht_trick=$('#lt-trick').height(); 	
+ 	$('#part3 li').mouseenter(function(){
+		$(this).find('div').stop().animate({'background-position-x':'-120px','background-position-y': '0px','margin-bottom':'-20px'},500).css({'color':'#FFFFFF'});
 	});
-	$('#about-head-intro').slideDown(1000);
-	var h1s = $('h1');
-	var topOf2ndH1 = $('h1:eq(1)').offset().top;
-	var topOfLastH1 = $('h1:last').offset().top;
-	var goTop = $('#go-top-about');
-	var goPrev = $('#go-prev-blk');
-	var goNext = $('#go-next-blk');
-
-	function showImg(elem){
-		elem.show();
-		elem.css({"display": "inline", "opacity": "0.3"});
-	}
-
-	function mIn(elem){
-		elem.mouseenter(function(){
-	 		elem.css({"display": "inline", "opacity": "0.7"});
-	 	});
-	}
-
-	function mOut(elem){
-		elem.mouseleave(function(){
-	 		elem.css({"display": "inline", "opacity": "0.3"});
-	 	});
-	}
-
-	function calculateNext(distance){
-		var res = 0;
-		h1s.each(function(){
-			res = $(this).offset().top;
-			if(distance<res){
-				return false;
-			}
-		});
-		return res;
-	}
-
-	function calculatePrev(distance){
-		var res = 0;
-		h1s.each(function(index){
-			res = $(this).offset().top;
-			if(distance<res){
-				res = $('h1:eq('+ (index-2) +')').offset().top;
-				return false;
-			}
-			res = $('h1:eq('+ (index-1) +')').offset().top;
-		});
-		return res;
-	}
-
- 	goTop.click(function(){
- 		$("html,body").animate({scrollTop: 0}, 1000);
- 	});
- 	mIn(goTop);
- 	mOut(goTop);
-
- 	goPrev.click(function(){
- 		var distance = $(document).scrollTop();
- 		var prevDis = calculatePrev(distance);
- 		$("html,body").animate({scrollTop: prevDis}, 1000);
- 	});
- 	mIn(goPrev);
- 	mOut(goPrev);
-
- 	goNext.click(function(){
- 		var distance = $(document).scrollTop();
- 		var nextDis = calculateNext(distance);
- 		$("html,body").animate({scrollTop: nextDis}, 1000);
- 	});
- 	mIn(goNext);
- 	mOut(goNext);
- 	
- 	//about js ends at here
+	$('#part3 li').mouseleave(function(){
+		$(this).find('div').stop().animate({'background-position-x':'0px','background-position-y': '-120px','margin-bottom':'0px'},500).css({'color':'#77c18d'});
+	});
+//about js ends at here
  });

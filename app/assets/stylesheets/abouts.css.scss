@@ -1,190 +1,280 @@
-// Place all the styles related to the abouts controller here.
+// Place all the styles related to the cats controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.aboutme, .about-contact-me{
-	position: relative;
-	top: 80px;
-	text-align: center;
-	font-family: 'Ziggurat-HTF-Black';
-	color: white;
-	padding: 0 0 300px 0;
-	min-height:700px;
+body{
+	margin: 0px;
 }
-.about-outer strong{
-
-	font-size: 187px;
-text-transform: uppercase;
-line-height: 218px;
-padding-top: 24px;
-font-weight: 900;
-font-family: "Proxima-Nova-1", Arial, sans-serif;
-
+#holder p{
+	color:#505050;
+	transition:color 1s;
+	-webkit-transition:color 1s;
 }
-.about-outer h1{
-	font-size: 80px;
-	padding: 30px;
-	line-height: 80px;
+#holder p:hover{
+	color:#FF3333;
 }
-.aboutme p, .about-mid p{
-font-family: sans-serif;
-	padding: 30px;
-	font-size: 25px;
-	line-height: 1;
+#lt-trick{
+	z-index: 6;
+	display:inline-block;
+	position:fixed;
+	background: url(movable.png) repeat;
+	background-position: 700px 0;
+	width:100%;
+	top:0px;
+	height:100%;
 }
-.about-header{
-	padding: 0 0 60px 0;
-}
-.bg-about{
-	position: fixed;
-	width: 100%;
+#img1, #img2{
 	height: 100%;
-	top: 0px;
-	background: url(beach.jpg) no-repeat center top;
-}
-.about-envp{
-	margin:auto;
-	top:211px;
-	height:533px;
-	width:484px;
-	background:url(env_close.png) no-repeat;
-	position: relative;
-}
-.list {
-  position: relative;
-  float: left;
-  font-faimly: 'Proxima-Nova-1', Proxima Nova, Myriad Pro, Arial, sans-serif;
-}
-
-.list p{
-	display: none;
-}
-.list div{
-	font-size:25px;
-	line-height: 1;
-	font-family: sans-serif;
-	position: relative;
-	width: 0px;
-	height: 0px;
-}
-.list div:hover{
-	cursor: default;
-	box-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 40px #000000, 0 0 70px #000000;
-}
-div.a1{
-	background: #FCD271;
-	color: #F78D3F;
-}
-div.a2{
-	background: #F78D3F;
-	color: #FCD271;
-}
-div.a3{
-	background: #2BBBD8;
-	color: #FFFFFF;
-}
-div.a4{
-	background: #102E37;
-	color: #2BBBD8;
-}
-.about-head{
-width: 310px;
-height: 365px;
-right: 100px;
-top: 50px;
-background: url(head.png) no-repeat;
-position: absolute;
-}
-.about-head-intro{
-	positon: absolute;
-	margin: auto;
-	display: none;
-}
-.about-mid{
-	padding: 0 0 60px 0;
-	min-height: 800px;
-	position: relative;
-background: url(background_gray.png) repeat ;
-	opacity :1;
-	margin: auto;
-	min-height: 1000px;
-}
-.about-compus, .about-blog, .about-life {
-	position: relative;
-	margin: auto;
-	left: 0px;
-}
-.about-compus{
-	color: #df5329;
-}
-.about-blog{
-	text-align: right;
-	color: #000000;
-}
-.about-life{
-	color: #FFFFFF;
-}
-
-.about-contact-me{
-	height: 400px;
-}
-.about-fence{
-	position: relative;
-	height: 60px;
 	width: 100%;
-	background: url(fence_gray.png);
-	background-repeat:repeat-x;
-}
-.about-email{
-	width: 384px;
-	height: 265px;
-	left: 300px;
-	background: url(email.png) no-repeat;
-	position: relative;
-}
-.carousel{
-	max-width: 1000px;
-	margin:auto;
-}
-.carousel-inner img{
+	position: fixed;
+	display: block;
 	margin: auto;
 }
-.carousel-caption{
-	opacity: 0.7;
+#above-img2{
+	display: inline-block;
+	height: 100%;
+	width: 100%;
+	position: fixed;
+	z-index: 9;
 }
-.go-top-about{
+#above-img2 #intro{
+	font-family: verdana,helvetica,arial,sans-serif;
+	position: absolute;
+	display: inline-block;
+	right: 20%;
+	width: 40%;
+}
+#img1{
+	height:150%;
+	background: url(black.jpg);
+	background-size: 100% 100%;
+	background-position: center;
+	z-index: 10;
+}
+#img2{
+	background: url(bars.png) repeat;
+	background-size: 20%;
+	z-index: 5;
+}
+#intro p{
+	line-height: 2em;
+	color:white;
+}
+#intro ul{
+	list-style: none;
+}
+#intro ul li{
+	display: inline;
+	padding: 10px;
+}
+#intro #card{
+	padding: 20px;
+	border-radius: 3px;
+	box-shadow: 5px 6px 0px rgba(0,0,0,0.3);
+	-webkit-box-shadow: 5px 6px 0px rgba(0,0,0,0.3);
+	-moz-box-shadow: 5px 6px 0px rgba(0,0,0,0.3);
+}
+#intro .card-blue{
+	background-color: #2BBBD8;
+	color:#FFFFFF;
+}
+#intro .card-red{
+	background-color: #FCD271;
+	color:#F78D3F;
+}
+#intro #card p{
+}
+#part1, #part2, #part3{
+	width: 100%;
+	height: 700px;
+	display:block;
+	position: relative;
+	z-index:20;
+	margin: auto;
+	text-align: center;
+}
+#part1{
 	top:100px;
 }
-.go-next, .go-prev{
-height: 25px;
-width: 50px;
-margin: 7px 0 0 14px
+#part2{
+	opacity: 0.02;
+	background: url(grain2.png) repeat;
+}
+#part3{
+	background: url(lines.png) repeat;
+}
+#part1 img{
+	display:inline-block;
+	position: absolute;
+	margin-top: 10px;
+}
+#part1 #left-line{
+	left:15%;
+}
+#part1 #right-line{
+	right:15%;
+}
+#above h1{
+	color:white;
+	font-size: 120px;
+	font-family: Arial, sans-serif;
+	display: inline-block;
+	zoom: 1;
+	margin-bottom: 20px;
+	line-height: 0.9;
 }
 
-.go-next{
-background: url(down.png) no-repeat;
-}
-.go-prev{
-background: url(up.png) no-repeat;
+#above em{
+	font-family: Georgia, Times;
+	color:#77c18d;
+	font-weight: normal;
+	font-size: 100px;
 }
 
-.go-next-blk, .go-prev-blk{
-background-color: #000000;
-position: fixed;
-height: 24px;
-width: 50px;
-opacity: 0.3;
-cursor: pointer;
-top: 100px;
-right: 155px;
-z-index: 10;
+#above h1>strong{
+	font-family:Arial;
+	font-weight:bolder;
 }
-.go-prev-blk{
-display:none;
+
+#above a{
+	font-size: 40px;
+	display: inline;
+	text-decoration: none;
+	color:#77c18d;
+	transition:color 1s;
+	-webkit-transition:color 1s;
 }
-.go-next-blk{
-	top: 126px;
+#above a:hover{
+	color:#FF3333;
 }
-.about-break{
-	height:300px;
+#above #part1 ul{
+	list-style: none;
+	display:inline;
+	padding: 10px;
+}
+#above #part1 ul li{
+	font-size: 40px;
+	display:none;
+	color:gray;
+	font-style: italic;
+}
+
+#above #part1 h2{
+	padding:20px;
+	font-size: 38px;
+	color:white;
+	font-weight: normal;
+	width: 70%;
+	margin:auto;
+	background: none;
+	background-size: 3%;
+	margin-top: 20px;
+	line-height: 1.2em;
+}
+h2.my-hide{
+	opacity:0.2;
+}
+
+#above-img2 #head{
+	display:inline-block;
+	position:absolute;
+	top:100px;
+	left: 200px;
+}
+#above-img2 #intro{
+	color:white;
+	font-size: 16px;
+	top:60px;
+	display:inline-block;
+	position:absolute;
+}
+#part3 #circle{
+	font-size: 30px;
+	font-family: sans-serif;
+	color:#77c18d;
+	border: 10px solid #B9B9B9;
+	height: 120px;
+	width:120px;
+	border-radius: 50%;
+	background: url(wave.jpg) no-repeat;
+	background-position: 0px -120px;
+	display: inline-block;
+	line-height: 120px;
+	transition:color 1s;
+	-webkit-transition:color 1s, -webkit-transform 1s;
+	-moz-transition:color 1s, -moz-transform 1s;
+}
+#part3 #circle:hover, #part3 ul li{
+	cursor: default;
+	transform:rotate(360deg);
+	-webkit-transform:rotate(360deg); /* Safari */
+	-moz-transform:rotate(360deg); /* FF */
+};
+#above #part3 ul{
+	list-style: none;
+	position:relative;
+	margin: auto;
+}
+
+#above #part3 ul li{
+	display: inline-block;
+	width:270px;
+	top:10px;
+	position: absolute;
+}
+#above #part3 ul li p{
+	margin-top: 40px;
+	font-size: 20px;
+	font-family: sans-serif;
+}
+li#front{
+	left:200px;
+}
+li#back{
+	left:40%;
+}
+li#data{
+	right:200px;
+}
+#part3 #edge{
+	height:6px;
+	width:100%;
+	background: url(bian.png) repeat;
+	position:relative;
+	display: block;
+	top:-6px;
+	animation: edgeMove 3s linear 0s infinite normal;
+	-webkit-animation: edgeMove 3s linear 0s infinite normal;
+	-moz-animation: edgeMove 3s linear 0s infinite normal;
+}
+#part3 #footer{
+	position:absolute;
+	display: block;
+	bottom: 10px;
+	left:40%;
+	right:40%;
+}
+#part3 #bottom-intro{
+	text-align: center;
+	position:relative;
+	top:55%;
+	left:0px;
+	display: none;
+}
+#part3 #bottom-intro h1{
+	color:black;
+	font-size: 4em;
+}
+
+@keyframes edgeMove{
+	from {background-position: 0px}
+	to {background-position: 12px}
+}
+@-webkit-keyframes edgeMove{
+	from {background-position: 0px}
+	to {background-position: 12px}
+}
+@-moz-keyframes edgeMove{
+	from {background-position: 0px}
+	to {background-position: 12px}
 }

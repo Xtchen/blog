@@ -10,30 +10,9 @@
   <script src="http://twitter.github.com/bootstrap/assets/js/bootstrap.js"></script>
 </head>
 <body>
-	<div class="bg">
-		<!--navigate bar-->
 		<%= render :partial => "layouts/navbar" %>
-		<!--next/prev-->
-		<div id="go-prev-blk" class="go-prev-blk">
-			<div id="go-prev" class="go-prev">
-			</div>
-		</div>
-		<div id="go-next-blk" class="go-next-blk">
-			<div id="go-next" class="go-next">
-			</div>
-		</div>
-		<!--go top-->
-			<div id="go-top-about" class="go-top go-top-about">
-				<div id="go-top-img" class="go-top-img">
-					
-				</div>
-			</div>
 		<!--main container-->
 		<%= yield %>
-		<!--footer-->
-		<div id="footer" class="footer">
-			<p class="muted" align="center">Xiaotong Chen ©2013</p>
-		</div>
-	</div>
+
 </body>
 </html>
