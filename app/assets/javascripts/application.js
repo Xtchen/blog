@@ -14,8 +14,9 @@
 //= require jquery_ujs
 //= require_tree .
 //= require ckeditor/ckeditor
-
+$('html').hide();
 $(document).ready(function(){
+	$('html').fadeIn(1000);
 	$('.addTag').click(function(){
 		var tag = $(this).text();
 		$('#tags').val(function(i, old){

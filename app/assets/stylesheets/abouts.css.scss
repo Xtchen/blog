@@ -225,6 +225,7 @@ h2.my-hide{
 #above #part3 ul li p{
 	margin-top: 40px;
 	font-size: 20px;
+	line-height: 1.1em;
 	font-family: sans-serif;
 }
 li#front{
@@ -247,17 +248,11 @@ li#data{
 	-webkit-animation: edgeMove 3s linear 0s infinite normal;
 	-moz-animation: edgeMove 3s linear 0s infinite normal;
 }
-#part3 #footer{
-	position:absolute;
-	display: block;
-	bottom: 10px;
-	left:40%;
-	right:40%;
-}
+
 #part3 #bottom-intro{
 	text-align: center;
 	position:relative;
-	top:55%;
+	top:60%;
 	left:0px;
 	display: none;
 }
@@ -265,7 +260,13 @@ li#data{
 	color:black;
 	font-size: 4em;
 }
-
+#part3 #footer{
+	position:absolute;
+	display: block;
+	bottom: 10px;
+	left:40%;
+	right:40%;
+}
 @keyframes edgeMove{
 	from {background-position: 0px}
 	to {background-position: 12px}
