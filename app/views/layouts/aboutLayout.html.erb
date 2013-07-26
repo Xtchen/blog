@@ -5,14 +5,24 @@
   <title>Xiaotong Chen | Home</title>
   <% record_ip("home") %>
   <%= stylesheet_link_tag    "application", :media => "all" %>
+  <link rel="stylesheet" type="text/css" href="assets/jpreloader.css">
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
   <script src="http://twitter.github.com/bootstrap/assets/js/bootstrap.js"></script>
+  <script src="assets/jpreLoader.js"></script>
+
 </head>
 <body>
 		<%= render :partial => "layouts/navbar" %>
 		<!--main container-->
 		<%= yield %>
-
+<script type="text/javascript">
+   $(document).ready(function() {
+      $('body').jpreLoader({
+      	splashID: "#jSplash",
+		loaderVPos: '50%'
+      });
+   });
+</script>
 </body>
 </html>
