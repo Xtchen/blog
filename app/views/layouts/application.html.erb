@@ -5,10 +5,9 @@
   <title>Xiaotong Chen <%= yield :title %></title>
   <% record_ip(yield :where) %>
   <%= javascript_include_tag "application" %>
-  <script type="text/javascript">var CKEDITOR_BASEPATH = '/assets/ckeditor/';</script>
   <%= csrf_meta_tags %>
   <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet">
-  <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
+  <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js">var CKEDITOR_BASEPATH = '/assets/ckeditor/';</script>
   <%= stylesheet_link_tag    "application", :media => "all" %>
 </head>
 <body>
