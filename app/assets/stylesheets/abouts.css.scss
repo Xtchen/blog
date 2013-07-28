@@ -279,11 +279,15 @@ li#data{
 	from {background-position: 0px}
 	to {background-position: 12px}
 }
-/*#test{
-	height:100%;
-	width: 100%;
-	background-color: red;
-	position: fixed;
-	display: block;
-	z-index: 99999;
-}*/
+
+@media screen and (min-width: 0px) {
+	.navbar-fixed-top{
+		position:fixed;
+		margin: 0px;
+		padding: 0px;
+	}
+	body{
+		padding: 0px;
+		margin: 0px;
+	}
+}

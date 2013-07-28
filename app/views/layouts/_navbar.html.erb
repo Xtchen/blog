@@ -3,33 +3,40 @@
 			<div class="navbar-inner">
 				<div class="container">
 					<a class="brand" href=<%= root_path %>>Xiaotong Chen</a>
-					<ul class="nav">
-						<li class="divider-vertical"></li>
-						<li><%= link_to "HOME", home_path%></a></li>
-						<li class="divider-vertical"></li>
-						<li><%= link_to "BLOG", blog_path%></a></li>
-						<li class="divider-vertical"></li>
-						<li><%= link_to "RESUME", resumes_path%></li>
-						<li class="divider-vertical"></li>
-						<% if signed_in? %>
-							<li id="fat-menu" class="dropdown">
-								<a href="#" class="dropdown-toggle" data-toggle="dropdown">
-									ADMIN <b class="caret"></b>
-								</a>
-								<ul class="dropdown-menu" >
-									<li><%= link_to "Write a post", new_post_path %></li>
-									<li><%= link_to "Post a resume", new_resume_path %></li>
-									<li><%= link_to "Setting", settings_path %></li>
-									<li><%= link_to "Notices", notices_path %></li>
-									<li class="divider"></li>
-									<li><%= link_to "Sign out", signout_path %></li>
-								</ul>
-							</li>
-						<% end %>
-					</ul>
-					<form class="navbar-search pull-right" id="search_form" action=<%= search_posts_path %> method="post">
-						<input type="text" class="search-query" placeholder="Search" id="search_box" name="keyword"/>
-					</form>
+					<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+				        <span class="icon-bar"></span>
+				        <span class="icon-bar"></span>
+				        <span class="icon-bar"></span>
+				      </a>
+				    <div class="nav-collapse collapse">
+						<ul class="nav">
+							<li class="divider-vertical"></li>
+							<li><%= link_to "HOME", home_path%></a></li>
+							<li class="divider-vertical"></li>
+							<li><%= link_to "BLOG", blog_path%></a></li>
+							<li class="divider-vertical"></li>
+							<li><%= link_to "RESUME", resumes_path%></li>
+							<li class="divider-vertical"></li>
+							<% if signed_in? %>
+								<li id="fat-menu" class="dropdown">
+									<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+										ADMIN <b class="caret"></b>
+									</a>
+									<ul class="dropdown-menu" >
+										<li><%= link_to "Write a post", new_post_path %></li>
+										<li><%= link_to "Post a resume", new_resume_path %></li>
+										<li><%= link_to "Setting", settings_path %></li>
+										<li><%= link_to "Notices", notices_path %></li>
+										<li class="divider"></li>
+										<li><%= link_to "Sign out", signout_path %></li>
+									</ul>
+								</li>
+							<% end %>
+						</ul>
+						<form class="navbar-search pull-right" id="search_form" action=<%= search_posts_path %> method="post">
+							<input type="text" class="search-query" placeholder="Search" id="search_box" name="keyword"/>
+						</form>
+					</div>
 				</div>
 			</div>
 		</div>

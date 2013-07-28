@@ -161,10 +161,11 @@ $(document).ready(function(){
 
 	setInterval(rotate, 3000);	
 	//rotate(0, lis);
+	var lt_trick_pos=$(window).width()-700;
+	$('#lt-trick').css({'backgroundPosition':'0 0'});
 	$('#part1, #part2').css({'height':$(window).height()*1.5});
 	$('#part3').css({'height':$(window).height()*0.8});
-	var ht=$('#img1').height();
-	var ht_trick=$('#lt-trick').height(); 	
+	var ht=$('#img1').height();	
  	$('#part3 li').mouseenter(function(){
 		$(this).find('div').stop().animate({'background-position-x':'-120px','background-position-y': '0px','margin-bottom':'-20px'},500).css({'color':'#FFFFFF'});
 	});
