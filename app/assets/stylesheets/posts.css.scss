@@ -105,9 +105,13 @@ font-weight: bold;
 position: relative;
 color: white;
 height: 10px;
-padding: 6px 0px 0px 16px;
+padding: 4px 0px 0px 20px;
 font-size: 14px;
 font-weight: bold;
+width: 55px;
+}
+.post-ts-date-flag:hover{
+  cursor:default;
 }
 .post-content{
 	margin: 30px 0 0 0;
