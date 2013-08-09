@@ -125,20 +125,3 @@ bottom: 100px;
 right: 100px;
 z-index: 10;
 }
-
-@media screen and (max-width: 767px) and (min-width: 0px) {
-  .post-ts-flag{
-    right:0px !important;
-    top:0px !important;
-  }
-  .go-top{
-    bottom: 0px;
-    right: 0px;
-  } 
-  .prev-button{
-    left:0px !important;
-  }
-  .next-button{
-    right:0px !important;
-  }
-}

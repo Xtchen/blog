@@ -209,3 +209,19 @@ display:none;
   font-size: 2em;
   text-align: center;
 }
+@media screen and (max-width: 767px) and (min-width: 0px) {
+  .post-ts-flag{
+    right:0px;
+    top:0px;
+  }
+  .go-top{
+    bottom: 0px;
+    right: 0px;
+  } 
+  .prev-button{
+    left:0px;
+  }
+  .next-button{
+    right:0px;
+  }
+}
