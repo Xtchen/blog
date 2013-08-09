@@ -39,6 +39,7 @@ font-weight: 200;
 line-height: 30px;
 color: inherit;
 background-color: white;
+position:relative;
 -webkit-border-radius: 6px;
 -moz-border-radius: 6px;
 border-radius: 6px;
@@ -82,17 +83,14 @@ font-style: italic;
 text-decoration: none;
 color: #f0ac98;
 }
-.post-ts-arrow{
-background: url(date-arrow.png) no-repeat;
-width: 175px;
-height: 41px;
-margin: -45px 0 0 -70px;
-}
+
 .post-ts-flag{
 background: url(date-flag.png) no-repeat;
-width: 175px;
+width: 75px;
 height: 40px;
-margin: -45px 0 0 -125px;
+position:absolute;
+top:45px;
+right: 100%;
 }
 .post-ts-date-arrow{
 position: relative;
@@ -124,6 +122,10 @@ width: 55px;
 .post-footer-tags{
 	float:left;
 }
+.post-footer-tags .label:hover{
+  background-color: #f87b00;
+}
+
 .post-footer-coms{
 	max-width: 300px;
 	float:right;
