@@ -214,28 +214,21 @@ h2.my-hide{
 	list-style: none;
 	position:relative;
 	margin: auto;
+	height: 310px;
 }
 
 #above #part3 ul li{
 	display: inline-block;
 	width:270px;
 	top:10px;
-	position: absolute;
+	position: relative;
+	vertical-align: text-top;
 }
 #above #part3 ul li p{
-	margin-top: 40px;
 	font-size: 20px;
 	line-height: 1.1em;
 	font-family: sans-serif;
-}
-li#front{
-	left:200px;
-}
-li#back{
-	left:40%;
-}
-li#data{
-	right:200px;
+	margin: 40px 3% 0px 3%;
 }
 #part3 #edge{
 	height:6px;
@@ -252,9 +245,8 @@ li#data{
 #part3 #bottom-intro{
 	text-align: center;
 	position:relative;
-	top:60%;
-	left:0px;
 	display: none;
+	top: 50px;
 }
 #part3 #bottom-intro h1{
 	color:black;
@@ -320,6 +312,7 @@ li#data{
 	-webkit-border-radius:25px;
 }
 #jpreBar {
+	display:none;
 	border-radius:25px;
 	-moz-border-radius:25px;
 	-webkit-border-radius:25px;
@@ -409,9 +402,10 @@ li#data{
 	color:#ccc;
 	font-family:"Trebuchet MS",Arial,Helvetica,sans-serif;
 	font-weight:bold;
+	font-size: 6em;
 	text-align:center;
 	text-shadow:1px 1px 1px #333;
-	top:-100%;
+	position: absolut;
 }
 
 #jpreButton{

@@ -167,10 +167,12 @@ $(document).ready(function(){
 	$('#part3').css({'height':$(window).height()*0.8});
 	var ht=$('#img1').height();	
  	$('#part3 li').mouseenter(function(){
-		$(this).find('div').stop().animate({'background-position-x':'-120px','background-position-y': '0px','margin-bottom':'-20px'},500).css({'color':'#FFFFFF'});
+		$(this).find('div').stop().animate({'background-position-x':'-120px','background-position-y': '0px'},500).css({'color':'#FFFFFF'});
+		$(this).find('p').stop().animate({'margin-top':'20px'},500);
 	});
 	$('#part3 li').mouseleave(function(){
-		$(this).find('div').stop().animate({'background-position-x':'0px','background-position-y': '-120px','margin-bottom':'0px'},500).css({'color':'#77c18d'});
+		$(this).find('div').stop().animate({'background-position-x':'0px','background-position-y': '-120px'},500).css({'color':'#77c18d'});
+		$(this).find('p').stop().animate({'margin-top':'40px'},500);
 	});
 //about js ends at here
  });
@@ -194,8 +196,8 @@ $(document).ready(function(){
 		current = 0;
 	
 	var jpreOptions = {
-		splashVPos: '35%',
-		loaderVPos: '75%',
+		splashVPos: '55%',
+		loaderVPos: '55%',
 		splashID: '#jpreContent',
 		showSplash: true,
 		showPercentage: true,
