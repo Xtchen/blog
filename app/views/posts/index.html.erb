@@ -63,10 +63,10 @@
 							</a>
 						</div>
 						<div id="collapseThree" class="accordion-body collapse">
-							<div class="accordion-inner">
+							<div class="accordion-inner archive-inner">
 								<div class="accordion" id="date_inner_accordion">
 								<% @posts_years.each do |year, posts|%>
-									<div class="accordion-group">
+									<div class="accordion-group each-year">
 										<div class="accordion-heading">
 											<a class="accordion-toggle" data-toggle="collapse" data-parent="#date_inner_accordion" href="#collapse"+<%= year.strftime("%Y")%>>
 												<%= year.strftime("%Y")%>
@@ -95,7 +95,7 @@
 							</a>
 						</div>
 						<div id="collapseFour" class="accordion-body collapse">
-							<div class="accordion-inner">
+							<div class="accordion-inner links-inner">
 								<% @links.each do |l| %>
 								<%= link_to l.name, l.url, :target => "view_window" %><br>
 								<% end %>
