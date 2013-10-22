@@ -43,7 +43,7 @@ gem 'ckeditor'
 
 gem 'jbuilder', '~> 1.4.2'
 
-
+gem "rakismet", '~> 1.4.0'
 # To use Jbuilder templates for JSON
 # gem 'jbuilder'
 

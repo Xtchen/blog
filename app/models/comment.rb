@@ -1,10 +1,10 @@
 class Comment < ActiveRecord::Base
+	include Rakismet::Model
 	attr_accessible :author, :content, :post_id
 	belongs_to :post
 	has_many :notices, :dependent => :delete_all
 	validates :content, :presence => true
 	validates :content, :length => { :minimum => 6 }
-
 	def my_to_json(signed)
 		Jbuilder.encode do |json|
 			json.current self.id

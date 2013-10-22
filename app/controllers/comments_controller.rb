@@ -1,5 +1,5 @@
 class CommentsController < ApplicationController
-
+	
 	before_filter :admin_validate, :except => [:create]
 	respond_to :html, :xml, :json
 
@@ -14,21 +14,22 @@ class CommentsController < ApplicationController
 		else
 			comment.mine = false
 		end
-		if comment.save
-			#flash[:success] = 'Comment successfully posted!'
-			if !comment.mine
-				Notice.create(:comment_id => comment.id, :active => true)
+			if !comment.spam? && comment.save
+				#flash[:success] = 'Comment successfully posted!'
+				if !comment.mine
+					Notice.create(:comment_id => comment.id, :active => true)
+				end
+				respond_to do |format|
+					#format.json { render :text => {:comments => Post.find(comment.post_id).comments, :count => Post.find(comment.post_id).comments.size, :signed => signed_in?, :valid => true}.to_json}
+					format.html {render :partial => "comments/show_comment", :locals => {:post => comment.post}}
+				end
+			else
+				#flash[:error] = 'Faild! The comment should contain at least 6 letters!'
+				respond_to do |format|
+					format.json { render :json => {:saved => false}.to_json}
+				end
 			end
-			respond_to do |format|
-				#format.json { render :text => {:comments => Post.find(comment.post_id).comments, :count => Post.find(comment.post_id).comments.size, :signed => signed_in?, :valid => true}.to_json}
-				format.html {render :partial => "comments/show_comment", :locals => {:post => comment.post}}
-			end
-		else
-			#flash[:error] = 'Faild! The comment should contain at least 6 letters!'
-			respond_to do |format|
-				format.json { render :json => {:saved => false}.to_json}
-			end
-		end
+		
 		#redirect_to post_path(comment.post)
 	end
 
